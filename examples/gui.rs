@@ -394,11 +394,11 @@ fn main() {
     let w = 800;
     let h = 600;
     let (width, height) = orbclient::get_display_size().unwrap();
-    let mut window = Window::new_flags((width as i32) / 4,
+    let mut window = Window::new((width as i32) / 4,
                                        (height as i32) / 4,
                                        w,
                                        h,
-                                       "Cairo", &[orbclient::WindowFlag::Async]).unwrap();
+                                       "Cairo").unwrap();
     let (win_w, win_h) = (w, h);
     window.rect(0, 0, win_w, win_h, Color::rgb(233, 233, 233));
 
