@@ -195,10 +195,31 @@ fn draw_combobox(cr: *mut cairo_t, x: i32, y: i32, width: i32, height: i32) {
     button.border_width = 1;
     button.fill_color = Color::rgb(248, 248, 248);
     button.fill_end_color = Color::rgb(224, 224, 224);
-    button.text = String::from("v");
     button.text_center = true;
     button.text_bold = true;
     button.draw(cr);
+
+    unsafe {
+        let filename = CString::new("assets/arrow-down.png").expect("CString::new failed");
+        let png = cairo_image_surface_create_from_png(filename.as_ptr());
+
+        //save cairo state
+        cairo_save(cr);
+
+        //set the coordinates zero point to the desired point for the graphic
+        cairo_translate(cr,(x + width - height) as f64+5.0, y as f64 +5.0);
+
+        //scale the coordinate space
+        cairo_scale (cr, 0.30, 0.30);
+
+        //draw image on position zero for x and y
+        cairo_set_source_surface (cr, png, 0.0,0.0);
+        cairo_paint (cr);
+
+        //restore the old cairo state
+        cairo_restore(cr);
+
+    }
 }
 
 

@@ -937,4 +937,5 @@ extern "C" {
     pub fn cairo_region_xor(dst: *mut cairo_region_t, other: *const cairo_region_t) -> cairo_status_t;
     pub fn cairo_region_xor_rectangle(dst: *mut cairo_region_t, rectangle: *const cairo_rectangle_int_t) -> cairo_status_t;
     pub fn cairo_debug_reset_static_data();
+    pub fn cairo_image_surface_create_from_png(filename: *const ::std::os::raw::c_char) -> *mut cairo_surface_t;
 }
